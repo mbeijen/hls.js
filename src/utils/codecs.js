@@ -69,6 +69,9 @@ function isCodecType (codec, type) {
 }
 
 function isCodecSupportedInMp4 (codec, type) {
+  if (!type && isCodecType(codec, 'audio')) {
+    type = 'audio';
+  }
   return window.MediaSource.isTypeSupported(`${type || 'video'}/mp4;codecs="${codec}"`);
 }
 
